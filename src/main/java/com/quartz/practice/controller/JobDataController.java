@@ -3,8 +3,7 @@ package com.quartz.practice.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quartz.practice.dto.JobListQueryDTO;
@@ -22,8 +21,8 @@ public class JobDataController {
     @Autowired
     private SysJobService sysJobService;
 
-    @GetMapping("/jobPageList")
-    public JobListResultDTO jobList(@RequestBody @Valid JobListQueryDTO input) {
+    @PostMapping("/jobPageList")
+    public JobListResultDTO jobList(@Valid JobListQueryDTO input) {
         return sysJobService.jobList(input);
     }
 }

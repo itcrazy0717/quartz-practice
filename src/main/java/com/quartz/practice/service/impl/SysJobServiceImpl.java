@@ -48,23 +48,8 @@ public class SysJobServiceImpl extends ServiceImpl<SysJobMapper, SysJob> impleme
      * @param input     请求参数
      */
     private void buildQueryCondition(QueryWrapper<SysJob> condition, JobListQueryDTO input) {
-        if (Objects.nonNull(input.getId())) {
-            condition.eq("id", input.getId());
-        }
         if (Objects.nonNull(input.getJobName())) {
-            condition.eq("jobName", input.getJobName());
-        }
-        if (Objects.nonNull(input.getJobGroup())) {
-            condition.eq("jobGroup", input.getJobGroup());
-        }
-        if (Objects.nonNull(input.getJobCron())) {
-            condition.eq("jobCron", input.getJobCron());
-        }
-        if (Objects.nonNull(input.getJobClassPath())) {
-            condition.eq("jobClassPath", input.getJobClassPath());
-        }
-        if (Objects.nonNull(input.getJobDescribe())) {
-            condition.eq("jobDescribe", input.getJobDescribe());
+            condition.like("job_name", input.getJobName());
         }
     }
 }

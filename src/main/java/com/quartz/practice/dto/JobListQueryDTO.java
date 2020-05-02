@@ -1,5 +1,7 @@
 package com.quartz.practice.dto;
 
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,32 +19,19 @@ import lombok.NoArgsConstructor;
 public class JobListQueryDTO {
 
     /**
-     * 主键id
-     */
-    private Long id;
-
-    /**
      * 任务名称
      */
     private String jobName;
 
     /**
-     * 任务组名
+     * 页码
      */
-    private String jobGroup;
+    @NotNull(message = "页码为空")
+    private Integer page;
 
     /**
-     * 时间表达式
+     * 每页显示条数
      */
-    private String jobCron;
-
-    /**
-     * 类路径,全类型
-     */
-    private String jobClassPath;
-
-    /**
-     * 任务功能描述
-     */
-    private String jobDescribe;
+    @NotNull(message = "每页显示条数为空")
+    private Integer limit;
 }

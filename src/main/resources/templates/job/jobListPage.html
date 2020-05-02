@@ -12,7 +12,7 @@
 
     <br/>
     <div class="demoTable">
-        搜索任务：
+        搜索(任务名称)任务：
         <div class="layui-inline">
             <input class="layui-input" name="name" id="name" autocomplete="off">
         </div>
@@ -58,6 +58,7 @@
         table.render({
             elem: '#test',
             url: '/jobPageList',
+            method: 'POST',
             page: true,
             id: 'testReload',
             cols: [
@@ -77,10 +78,10 @@
         /*重新加载数据表格*/
         var $ = layui.$, active = {
             reload: function () {
-                var id = $('#id');
+                var id = $('#name');
                 table.reload('testReload', {
                     where: {
-                        id: id.val()
+                        jobName: id.val()
                     }
                 });
             }
