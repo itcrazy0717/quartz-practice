@@ -1,20 +1,23 @@
-package com.quartz.practice.domain;
+package com.quartz.practice.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * <p>
- *
- * </p>
- *
- * @author code_template
- * @date 2020-04-09
+ * @author: dengxin.chen
+ * @date: 2020-05-02 16:45
+ * @description:
  */
 @Data
-public class SysJob {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class JobListQueryDTO {
 
     /**
-     * ID
+     * 主键id
      */
     private Long id;
 
@@ -39,18 +42,7 @@ public class SysJob {
     private String jobClassPath;
 
     /**
-     * 传递map参数
-     */
-    private String jobDataMap;
-
-    /**
-     * 状态:1启用 0停用
-     */
-    private Integer jobStatus;
-
-    /**
      * 任务功能描述
      */
     private String jobDescribe;
-
 }

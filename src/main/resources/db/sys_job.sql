@@ -1,7 +1,7 @@
 CREATE database gupao;
 
 CREATE TABLE `sys_job` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `job_name` varchar(512) NOT NULL COMMENT '任务名称',
   `job_group` varchar(512) NOT NULL COMMENT '任务组名',
   `job_cron` varchar(512) NOT NULL COMMENT '时间表达式',

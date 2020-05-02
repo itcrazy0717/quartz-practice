@@ -8,11 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @author: dengxin.chen
  * @date: 2020-04-07 22:42
- * @description:
+ * @description: 前端页面控制器
  */
 @Slf4j
 @Controller
-public class JobController {
+public class JobPageController {
 
     /**
      * 任务列表
