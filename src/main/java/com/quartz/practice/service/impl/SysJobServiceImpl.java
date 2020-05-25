@@ -11,6 +11,7 @@ import com.quartz.practice.dao.SysJobMapper;
 import com.quartz.practice.domain.SysJob;
 import com.quartz.practice.dto.JobListQueryDTO;
 import com.quartz.practice.dto.JobListResultDTO;
+import com.quartz.practice.enums.Delete;
 import com.quartz.practice.service.SysJobService;
 
 /**
@@ -25,7 +26,7 @@ import com.quartz.practice.service.SysJobService;
 public class SysJobServiceImpl extends ServiceImpl<SysJobMapper, SysJob> implements SysJobService {
 
     @Override
-    public JobListResultDTO jobList(JobListQueryDTO input) {
+    public JobListResultDTO taskList(JobListQueryDTO input) {
         JobListResultDTO result = new JobListResultDTO();
         if (Objects.isNull(input)) {
             return result;
@@ -40,6 +41,22 @@ public class SysJobServiceImpl extends ServiceImpl<SysJobMapper, SysJob> impleme
         return result;
     }
 
+    @Override
+    public Integer deleteTask(Long id) {
+        if (Objects.isNull(id)) {
+            return 0;
+        }
+        SysJob condition = new SysJob();
+        condition.setId(id);
+        condition.setIsDelete(Delete.DELETE.getValue());
+        return this.baseMapper.updateById(condition);
+    }
+
+    @Override
+    public List<SysJob> queryTaskList(SysJob condition) {
+        return this.baseMapper.selectList(new QueryWrapper<>(condition));
+    }
+
     /**
      * 构建请求条件
      * by dengxin.chen
@@ -51,5 +68,6 @@ public class SysJobServiceImpl extends ServiceImpl<SysJobMapper, SysJob> impleme
         if (Objects.nonNull(input.getJobName())) {
             condition.like("job_name", input.getJobName());
         }
+        condition.eq("is_delete", Delete.NO_DELETE.getValue());
     }
 }

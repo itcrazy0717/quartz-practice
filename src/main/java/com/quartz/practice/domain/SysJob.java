@@ -44,7 +44,7 @@ public class SysJob {
     private String jobDataMap;
 
     /**
-     * 状态:1启用 0停用
+     * 状态: 1启用 0停用
      */
     private Integer jobStatus;
 
@@ -52,5 +52,10 @@ public class SysJob {
      * 任务功能描述
      */
     private String jobDescribe;
+
+    /**
+     * 是否删除：0-不删除 1-删除
+     */
+    private Integer isDelete;
 
 }
